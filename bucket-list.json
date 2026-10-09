@@ -1,0 +1,68 @@
+{
+    "os": "Arch Linux",
+
+    "installation":
+    {
+        "filesystem":
+        [
+            [ "sda1", "btrfs", "rest", "/data" ],
+            [ "sdb1", "fat32", "1M",   "/efi"  ],
+            [ "sdb2", "btrfs", "rest", "/"     ]
+        ],
+
+        "snapshots":
+        {
+            "sdb2":
+            [
+                [ "@",          "/",           "compress=zstd" ],
+                [ "@home",      "/home",       "compress=zstd" ],
+                [ "@snapshots", "/.snapshots", "compress=zstd" ],
+                [ "@var_log",   "/var/log",    "compress=zstd" ]
+            ]
+        },
+
+        "packages":
+        [
+            "base",
+            "linux",
+            "linux-firmware",
+            "linux-headers",
+            "sof-firmware",
+            "intel-ucode",
+            "base-devel",
+            "networkmanager",
+            "go",
+            "git",
+            "sudo",
+            "grub",
+            "efibootmgr",
+        ],
+
+        "fstab-dir": "/etc/fstab",
+        "timezone":  "Asia/Manila",
+        "locale":    "en_PH.UTF-8 UTF-8",
+        "lang":      "en_PH.UTF-8",
+
+        "bootloader":
+        {
+            "name":                "GRUB",
+            "target-architecture": "x86_64-efi",
+            "efi-directory":       "/efi",
+        },
+
+        "bootloader-configuration": "/boot/grub/grub.cfg",
+
+        "users":
+        [
+            [ "wheel,audio,video,input", "/bin/bash", "vince" ],
+        ],
+
+        "hostname":   "ryuzo-archlinux",
+        "allow-wheel": true,
+
+        "additional-scripts":
+        [
+            "systemctl enable NetworkManager",
+        ]
+    }
+}
