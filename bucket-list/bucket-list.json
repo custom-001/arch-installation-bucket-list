@@ -69,5 +69,7 @@
     "bucket-list":
     [
         "1. install yay",
+	"2. install drivers",
+	"3. install cosmic and it's greeter",
     ]
 }
