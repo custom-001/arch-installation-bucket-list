@@ -64,5 +64,10 @@
         [
             "systemctl enable NetworkManager",
         ]
-    }
+    },
+
+    "bucket-list":
+    [
+        "1. install yay",
+    ]
 }
